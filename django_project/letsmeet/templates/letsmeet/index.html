@@ -1,0 +1,29 @@
+{% extends 'letsmeet/base/base.html' %}
+{% load static %}
+        {% block title %}All Meetups{% endblock title %}
+
+        {% block site_css %}
+        <link rel="stylesheet" href="{% static "letsmeet/styles/all-meetups.css" %}">
+        {% endblock site_css %}
+        
+        {% block main_heading %}
+            We Got Great Meet-Ups Coming Up
+        {% endblock %}
+
+        {% block header_content %}
+            <p>Find The One That Best Suits You</p>
+        {% endblock header_content %}
+
+    {% block body %}
+
+        <section>
+            <h2>Upcoming Meetups</h2>
+    <ol>
+        {% for meetup_item in letsmeet %}
+        {% include "letsmeet/includes/index-page.html" with title=meetup_item.title image=meetup_item.image.url location="South Africa" slug=meetup_item.slug %}
+    </ol>
+        
+        {% endfor %}
+    </section>
+
+    {% endblock body %}
